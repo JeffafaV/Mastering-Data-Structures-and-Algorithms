@@ -1,6 +1,5 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Rectangle
 {
@@ -14,31 +13,35 @@ int main()
     int *p; // initializing
     p = &a; // declaring
     
-    cout << a << endl;
-	cout << *p << endl; // prints value of a
+    printf("%d\n", a);
+    printf("%d\n", *p);
 	// printf("Using pointer %d %d\n", p, &a); // produces warning due to type
     printf("Using pointer %p %p\n\n", p, &a); // both print the address of a
     
-    int B[5] = {2,4,6,8,10}; // array in stack (predefined allocation)
+    // array in stack (predefined allocation)
+    int B[5] = {2,4,6,8,10};
     int *p1;
     p1 = B;
     
     for (int i = 0; i < 5; i++)
     {
-        cout << B[i] << endl;
+        printf("%d\n", B[i]);
     }
     
-    cout << endl;
+    printf("\n");
     
-    for (int i = 0; i < 5; i++) // can use pointer to loop through array
+    // can use pointer to loop through array
+    for (int i = 0; i < 5; i++)
     {
-        cout << p1[i] << endl;
+        printf("%d\n", p1[i]);
     }
     
-    cout << endl;
+    printf("\n");
     
     int *p2;
-    p2 = new int[5]; // array in heap (runtime allocation)
+    // array in heap (runtime allocation)
+    p2 = (int*)malloc(5*sizeof(int));
+    // initializing
     p2[0] = 10;
     p2[1] = 15;
     p2[2] = 14;
@@ -47,12 +50,13 @@ int main()
     
     for (int i = 0; i < 5; i++)
     {
-        cout << p2[i] << endl;
+        printf("%d\n", p2[i]);
     }
+    printf("\n");
+    // delete array in heap
+    free(p2);
     
-    delete [] p2; // delete array in heap
-    cout << endl;
-    
+    // create pointers of different types
     int *p3;
     char *p4;
     float *p5;
@@ -60,11 +64,11 @@ int main()
     struct Rectangle *p7;
     
     // whatever the data type of a pointer it will always have the same amount of memory
-    cout << sizeof(p3) << endl;
-    cout << sizeof(p4) << endl;
-    cout << sizeof(p5) << endl;
-    cout << sizeof(p6) << endl;
-    cout << sizeof(p7) << endl;
+    printf("%ld\n", sizeof(p3));
+    printf("%ld\n", sizeof(p4));
+    printf("%ld\n", sizeof(p5));
+    printf("%ld\n", sizeof(p6));
+    printf("%ld\n", sizeof(p7));
     
     return 0;
 }

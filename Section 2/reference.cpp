@@ -2,10 +2,11 @@
 
 using namespace std;
 
+// pass by reference is only applicable in C++
 int main()
 {
     int a = 10;
-    int &r = a; // reference
+    int &r = a; // r is referencing a so they share the same memory
     
     cout << a << endl << r << endl;
     
@@ -18,7 +19,7 @@ int main()
     cout << a << endl << r << endl;
     
     int b = 30;
-    r = b; // a will now be b since r is b
+    r = b; // initializing r to b will also change a to b
     
     cout << a << endl << r << endl;
     
