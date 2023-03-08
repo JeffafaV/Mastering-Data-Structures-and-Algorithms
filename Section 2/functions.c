@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 int add(int a, int b)
 {
@@ -15,9 +13,10 @@ int main()
     int num2 = 15;
     int sum;
     
-    sum = add(num1, num2); // result of function will be stored in sum
+    // result of function will be stored in sum
+    sum = add(num1, num2);
     
-    cout << "Sum is " << sum << endl;
+    printf("Sum is %d", sum);
     
     return 0;
 }
