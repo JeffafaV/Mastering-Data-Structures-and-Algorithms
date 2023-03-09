@@ -3,6 +3,7 @@
 using namespace std;
 
 // call by value
+// doesn't change the values of the arguments
 void swap_value(int x, int y)
 {
     int temp;
@@ -12,6 +13,7 @@ void swap_value(int x, int y)
 }
 
 // call by address (modular machine code)
+// changes the values of the arguments
 void swap_address(int *x, int *y)
 {
     int temp;
@@ -21,6 +23,7 @@ void swap_address(int *x, int *y)
 }
 
 // call by reference (monolithic machine code)
+// changes the values of the arguments
 void swap_reference(int &x, int &y)
 {
     int temp;
@@ -29,6 +32,7 @@ void swap_reference(int &x, int &y)
     y = temp;
 }
 
+// call by reference is only applicable in C++
 int main()
 {
     int num1 = 10;
