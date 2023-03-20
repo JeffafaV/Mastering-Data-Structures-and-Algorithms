@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // using struct in functions
 struct Rectangle
@@ -9,17 +7,23 @@ struct Rectangle
     int breadth;
 };
 
-void initialize(struct Rectangle *r, int l, int b) // initialize length and breadth
+// initialize length and breadth
+// we are changing values of rectangle so we need a pointer
+void initialize(struct Rectangle *r, int l, int b)
 {
     r->length = l; // pointers use arrow
     r->breadth = b;
 }
 
-int area(struct Rectangle r) // struct as parameter
+// struct as parameter
+// we are not changing values in rectangle so no pointer is necessary
+int area(struct Rectangle r)
 {
     return r.length * r.breadth;
 }
 
+// struct as parameter
+// we are not changing values in rectangle so no pointer is necessary
 int perimeter(struct Rectangle r)
 {
     int p;
@@ -36,7 +40,7 @@ int main()
     int b;
     
     printf("Enter length and breadth\n");
-    cin >> l >> b;
+    scanf("%d %d", &l, &b);
     
     initialize(&r, l, b); // call by value and address
     

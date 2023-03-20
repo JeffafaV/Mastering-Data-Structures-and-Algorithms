@@ -5,15 +5,17 @@ using namespace std;
 // converted struct to class
 class Rectangle
 {
-private:
+	private:
     int length;
     int breadth;
     
-public:
+	public:
     // sets values to whatever user inputs
-    void initialize(int l, int b) // doesn't need a class parameter
+	// substitutes constructor
+    void initialize(int l, int b)
     {
-        length = l; // functions can directly access length and breadth
+		// functions can directly access length and breadth
+        length = l;
         breadth = b;
     }
 
@@ -39,7 +41,7 @@ int main()
     int l;
     int b;
     
-    printf("Enter length and breadth\n");
+	cout << "Enter length and breadth" << endl;
     cin >> l >> b;
     
     r.initialize(l, b); // call by value
@@ -47,7 +49,8 @@ int main()
     int a = r.area();
     int p = r.perimeter();
     
-    printf("Area = %d\nPerimeter = %d\n", a, p);
+	cout << "Area = " << a << endl;
+	cout << "Perimeter = " << p << endl;
     
     return 0;
 }

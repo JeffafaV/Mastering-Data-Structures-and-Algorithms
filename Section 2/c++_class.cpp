@@ -5,18 +5,22 @@ using namespace std;
 // class
 class Rectangle
 {
-private:
+	private:
     int length;
     int breadth;
     
-public:
-    Rectangle() // default contructor
+	public:
+	// default contructor
+	// runs if rectangle object is created without arguments
+    Rectangle()
     {
         length = 0;
         breadth = 0;
     }
     
-    Rectangle(int l, int b) // contructor with parameters
+	// contructor with parameters
+	// runs when rectangle object uses arguments
+    Rectangle(int l, int b)
     {
         length = l; // set variable in class to parameter
         breadth = b;
@@ -32,26 +36,33 @@ public:
         return 2 * (length + breadth);
     }
     
-    void setLength(int l) // mutator
+	// mutator/setter
+    void setLength(int l)
     {
         length = l;
     }
     
-    void setBreadth(int b) // setter
+	// mutator/setter
+    void setBreadth(int b)
     {
         breadth = b;
     }
     
-    int getLength() // accessor
+	// accessor/getter
+    int getLength()
     {
         return length;
     }
     
-    int getBreadth() // getter
+	// accessor/getter
+    int getBreadth()
     {
         return breadth;
     }
     
+	// destructor
+	// runs when object is destroyed
+	// is usually used for deallocating memory
     ~Rectangle()
     {
         cout << "Destructor";

@@ -19,7 +19,7 @@ int main()
     cout << a << endl << r << endl;
     
     int b = 30;
-    r = b; // initializing r to b will also change a to b
+    r = b; // setting r to b will also change a to b but r is still referencing a
     
     cout << a << endl << r << endl;
     

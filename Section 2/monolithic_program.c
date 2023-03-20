@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // monolithic programming (doesn't use functions)
 int main()
@@ -9,7 +7,7 @@ int main()
     int breadth = 0;
     
     printf("Enter length and breadth\n");
-    cin >> length >> breadth;
+	scanf("%d %d", &length, &breadth);
     
     int area = length * breadth;
     int perimeter = 2 * (length + breadth);

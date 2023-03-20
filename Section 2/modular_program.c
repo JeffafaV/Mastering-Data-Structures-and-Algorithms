@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 int area(int length, int breadth)
 {
@@ -21,7 +19,7 @@ int main()
     int breadth = 0;
     
     printf("Enter length and breadth\n");
-    cin >> length >> breadth;
+    scanf("%d %d", &length, &breadth);
     
     int a = area(length,breadth);
     int p = perimeter(length,breadth);
