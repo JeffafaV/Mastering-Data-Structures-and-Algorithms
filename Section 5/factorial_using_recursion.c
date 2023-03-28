@@ -1,8 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // factorial of natural numbers using recursion up to n (recursive)
+// space complexity: O(n)
 int fact(int n)
 {
     if (n == 0)
@@ -14,6 +13,7 @@ int fact(int n)
 }
 
 // factorial of natural numbers using loop up to n (iterative)
+// space complexity: O(1)
 int i_fact(int n)
 {
     int f = 1;
@@ -33,7 +33,7 @@ int main()
     
     printf("%d ", r);
     
-    cout << endl;
+	printf("\n");
     
     int r1;
     r1 = i_fact(5);

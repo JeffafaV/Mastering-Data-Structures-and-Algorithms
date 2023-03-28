@@ -1,13 +1,16 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // tree recursion
+// time complexity: O(2^n)
+// space complexity: O(n)
+/*
+	technically the time complexity is O(2^(n+1)-1)
+	and the space complexity is O(n+1) because 
+	there are function calls for 0 as well
+	making the range 0 to n
+*/
 void fun(int n)
 {
-    // time complexity: O(2^n)
-    // space complexity: O(n)
-	
     if (n > 0)
     {
         printf("%d ", n);

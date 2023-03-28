@@ -1,8 +1,7 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // sum of natural numbers using recursion up to n (recursive)
+// space complexity: O(n)
 int sum(int n)
 {
     if (n == 0)
@@ -14,6 +13,7 @@ int sum(int n)
 }
 
 // sum of natural numbers using loop up to n (iterative)
+// space complexity: O(1)
 int i_sum(int n)
 {
     int s = 0;
@@ -33,7 +33,7 @@ int main()
     
     printf("%d ", r);
     
-    cout << endl;
+    printf("\n");
     
     int r1;
     r1 = i_sum(5);

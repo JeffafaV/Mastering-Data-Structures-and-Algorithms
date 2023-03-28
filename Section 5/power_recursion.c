@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // getting the result for m^n with recursion
 int power(int m, int n) // time complexity: O(n)
@@ -13,7 +11,8 @@ int power(int m, int n) // time complexity: O(n)
     return power(m, n-1) * m;
 }
 
-// getting the result for m^n with recursion by reducing in half
+// getting the result for m^n with recursion by reducing in half each time
+// Ex: 2^8 is the same (2*2)^4 so we can multipy m to itself and reduce n by half
 int power1(int m, int n) // time complexity: O(log n)
 {
     if (n == 0)

@@ -1,10 +1,10 @@
-#include <iostream>
+#include <stdio.h>
 
-using namespace std;
-
+// declaring funB so that the compiler knows that it exists
+// when it is called in funA
 void funB(int n);
 
-// indirect recursion circles between different recursion functions
+// indirect recursion circles between different recursive functions
 void funA(int n)
 {
     if (n > 0)

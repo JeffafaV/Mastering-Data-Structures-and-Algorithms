@@ -1,6 +1,4 @@
-#include <iostream>
-
-using namespace std;
+#include <stdio.h>
 
 // head recursion
 void fun_head(int n)
@@ -22,6 +20,9 @@ void fun_tail(int n)
     }
 }
 
+// function that calls itself is called a recursive function
+// each call takes up space in the stack until the function 
+// terminates or returns something
 int main()
 {
 	// for both recursions
@@ -31,7 +32,7 @@ int main()
     int x = 3;
     
     fun_head(x); // values are printed as function is returned
-    cout << endl;
+    printf("\n");
     fun_tail(x); // values are printed as function is called
 
     return 0;
