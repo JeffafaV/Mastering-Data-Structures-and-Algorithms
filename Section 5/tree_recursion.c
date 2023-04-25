@@ -4,10 +4,12 @@
 // time complexity: O(2^n)
 // space complexity: O(n)
 /*
-	technically the time complexity is O(2^(n+1)-1)
-	and the space complexity is O(n+1) because 
-	there are function calls for 0 as well
-	making the range 0 to n
+	time complexity is O(2^n) or more specifically O(2^(n+1)-1) 
+	because each call is calling itself twice. This means that 
+	we are constantly getting two times as many calls from the 
+	previous call. The space complexity is O(n) or more specifically 
+	O(n+1) because that is the maximum height the stack ever goes 
+	when calling and ending function calls.
 */
 void fun(int n)
 {
