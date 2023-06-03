@@ -28,7 +28,7 @@ struct Queue
 // creates array and its attributes for the circular queue
 void create(struct Queue *q, int size)
 {
-	q->size = size; // setting size
+	q->size = size; // setting size of array
 	q->front = 0; // front index 0 since queue is empty
 	q->rear = 0; // rear index 0 since queue is empty
 	q->que = (struct Node **)malloc(q->size*sizeof(struct Node *)); // creating array of Node pointers
@@ -93,11 +93,11 @@ int isEmpty(struct Queue q)
 	// meaning the queue is empty
 	if (q.front == q.rear)
 	{
-		return true;
+		return 1;
 	}
 	
-	// queue not empty
-	return false;
+	// queue is not empty
+	return 0;
 }
 
 #endif
