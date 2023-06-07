@@ -1,5 +1,5 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUE_C++_H
+#define QUEUE_C++_H
 
 #include <iostream>
 
@@ -46,7 +46,7 @@ class Queue
 	}
 	void enqueue(Node *x); // adds a node to the array
 	Node* dequeue(); // deletes the first node from the array and returns it
-	
+	bool isEmpty();
 };
 
 // adds a node to the array
@@ -103,17 +103,17 @@ Node* Queue::dequeue()
 }
 
 // check to see if queue is empty
-int isEmpty(struct Queue q)
+bool Queue::isEmpty()
 {
 	// front and rear are the same index
 	// meaning the queue is empty
-	if (q.front == q.rear)
+	if (front == rear)
 	{
-		return 1;
+		return true;
 	}
 	
 	// queue is not empty
-	return 0;
+	return false;
 }
 
 #endif
