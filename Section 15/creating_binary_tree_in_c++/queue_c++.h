@@ -1,5 +1,5 @@
-#ifndef QUEUE_C++_H
-#define QUEUE_C++_H
+#ifndef QUEUE_CPP_H
+#define QUEUE_CPP_H
 
 #include <iostream>
 
@@ -88,7 +88,7 @@ Node* Queue::dequeue()
 		// increment front to the next position
 		front++;
 		// set x to equal to the front node
-		x = q->que[q->front];
+		x = que[front];
 		// note that we don't actually delete values 
 		// in the array, instead we increment the 
 		// front to make it seem like a node was deleted.
