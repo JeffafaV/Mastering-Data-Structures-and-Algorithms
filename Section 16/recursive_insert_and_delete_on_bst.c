@@ -115,13 +115,102 @@ struct Node* rinsert(struct Node *p, int key)
 	return p;
 }
 
+int height(struct Node *p)
+{
+	int x;
+	int y;
+	
+	if (p == NULL)
+	{
+		return 0;
+	}
+	
+	x = height(p->lChild);
+	y = height(p->rChild);
+	
+	if (x > y)
+	{
+		return x + 1;
+	}
+	
+	return y + 1;
+}
+
+struct Node* inPred(struct Node *p)
+{
+	while (p != NULL && p->rChild != NULL)
+	{
+		p = p->rChild;
+	}
+	
+	return p;
+}
+
+struct Node* inSucc(struct Node *p)
+{
+	while (p != NULL && p->lChild != NULL)
+	{
+		p = p->lChild;
+	}
+	
+	return p;
+}
+
+struct Node* delete(struct Node *p, int key)
+{
+	struct Node *q;
+	
+	if (p == NULL)
+	{
+		return NULL;
+	}
+	if (p->lChild == NULL && p->rChild == NULL)
+	{
+		if (p == root)
+		{
+			root = NULL;
+		}
+		
+		free(p);
+		return NULL;
+	}
+	
+	if (key < p->data)
+	{
+		p->lChild = delete(p->lChild, key);
+	}
+	else if (key > p->data)
+	{
+		p->rChild = delete(p->rChild, key);
+	}
+	else
+	{
+		if (height(p->lChild) > height(p->rChild))
+		{
+			q = inPred(p->lChild);
+			p->data = q->data;
+			p->lChild = delete(p->lChild, q->data);
+		}
+		else
+		{
+			q = inSucc(p->rChild);
+			p->data = q->data;
+			p->rChild = delete(p->rChild, q->data);
+		}
+	}
+	
+	return p;
+}
+
 int main()
 {
-	root = rinsert(root, 10);
-	rinsert(root, 5);
+	root = rinsert(root, 50);
+	rinsert(root, 10);
+	rinsert(root, 40);
 	rinsert(root, 20);
-	rinsert(root, 8);
 	rinsert(root, 30);
+	
+	delete(root, 30);
 	
 	inorder(root);
 	printf("\n");
