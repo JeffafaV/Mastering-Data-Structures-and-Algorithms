@@ -1,27 +1,31 @@
 #include <iostream>
 #include "queue_c++.h"
 
+// class used to create a tree
 class Tree
 {
 	private:
+	// the initial or root node of the binary tree
 	Node *root;
 	
 	public:
+	// default constructor
 	Tree()
 	{
+		// setting root to null
 		root = NULL;
 	}
-	void createTree();
-	void preorder(Node *p);
-	void preorder(){preorder(root);}
-	void postorder(Node *p);
-	void postorder(){postorder(root);}
-	void inorder(Node *p);
-	void inorder(){inorder(root);}
-	void levelorder(Node *p);
-	void levelorder(){levelorder(root);}
-	int height(Node *p);
-	int height(){return height(root);}
+	void createTree(); // creates a binary tree
+	void preorder(Node *p); // preorder traversal of the tree
+	void preorder(){preorder(root);} // used to publicly call preorder with private root variable
+	void postorder(Node *p); // postorder traversal of the tree
+	void postorder(){postorder(root);} // used to publicly call postorder with private root variable
+	void inorder(Node *p); // inorder traversal of the tree
+	void inorder(){inorder(root);} // used to publicly call inorder with private root variable
+	void levelorder(Node *p); // levelorder traversal of the tree
+	void levelorder(){levelorder(root);} // used to publicly call levelorder with private root variable
+	int height(Node *p); // gets the max height of a tree
+	int height(){return height(root);} // used to publicly call height with private root variable
 };
 
 void Tree::createTree()
