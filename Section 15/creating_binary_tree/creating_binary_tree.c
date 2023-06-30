@@ -18,7 +18,7 @@ void treeCreate()
 	// used to store nodes in the queue to preserve the 
 	// order that the nodes will be inserted in the tree
 	struct Queue q;
-	// creates q with a max  capacity of 100
+	// creates q with a max capacity of 100
 	create(&q, 100);
 	
 	// entering value of root node
