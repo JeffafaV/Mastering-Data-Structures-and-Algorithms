@@ -24,7 +24,7 @@ class Tree
 	void inorder(){inorder(root);} // used to publicly call inorder with private root variable
 	void levelorder(Node *p); // levelorder traversal of the tree
 	void levelorder(){levelorder(root);} // used to publicly call levelorder with private root variable
-	int height(Node *p); // gets the max height of a tree
+	int height(Node *p); // gets the max node height of a tree
 	int height(){return height(root);} // used to publicly call height with private root variable
 };
 
@@ -196,43 +196,69 @@ void Tree::levelorder(Node *p)
 	}
 }
 
-// returns the maximum height of the tree
+// returns the maximum node height of the tree through recursive calls
 int Tree::height(Node *p)
 {
+	// used to save the height of the left side
 	int x = 0;
+	// used to save the height of the right side
 	int y = 0;
+	
+	// p is not pointing to a node
 	if (p == NULL)
 	{
+		// returns 0 since there is no node 
+		// to add to the height
 		return 0;
 	}
 	
+	// recursive call to set x to the height of the left branch
 	x = height(p->lChild);
+	// recursive call to set y to the height of the right branch
 	y = height(p->rChild);
 	
+	// the left branch is the max height
 	if (x > y)
 	{
+		// add 1 to include the current node to 
+		// the max height and then return
 		return x+1;
 	}
 	
+	// the right branch is the max height
+	// add 1 to include the current node to 
+	// the max height and then return
 	return y+1;
 }
 
 int main()
 {
+	// create tree object
 	Tree t;
+	// construct tree
 	t.createTree();
+	
+	// print preorder traversal
 	cout << "Preorder:" << endl;
 	t.preorder();
 	cout << endl;
+	
+	// print inorder traversal
 	cout << "Inorder:" << endl;
 	t.inorder();
 	cout << endl;
+	
+	// print postorder traversal
 	cout << "Postorder:" << endl;
 	t.postorder();
 	cout << endl;
+	
+	// print levelorder traversal
 	cout << "Levelorder:" << endl;
 	t.levelorder();
 	cout << endl;
+	
+	// print height
 	cout << "Height:" << endl;
 	cout << t.height();
 	

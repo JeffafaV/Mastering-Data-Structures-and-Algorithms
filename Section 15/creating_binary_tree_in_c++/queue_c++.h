@@ -46,7 +46,7 @@ class Queue
 	}
 	void enqueue(Node *x); // adds a node to the array
 	Node* dequeue(); // deletes the first node from the array and returns it
-	bool isEmpty();
+	bool isEmpty(); // checks to see whether the queue is empty or not
 };
 
 // adds a node to the array
