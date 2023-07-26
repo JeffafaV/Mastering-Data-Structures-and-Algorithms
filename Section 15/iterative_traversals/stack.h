@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "queue.h"
+#include "queue.h" // only needed for the Node struct
 
 // creating a structure for a stack data structure
 struct Stack
