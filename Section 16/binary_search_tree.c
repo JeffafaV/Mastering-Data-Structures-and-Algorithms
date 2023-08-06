@@ -74,70 +74,101 @@ void insert(int key)
 	p->lChild = NULL; // set node's left child to null
 	p->rChild = NULL; // set node's right child to null
 	
-	
+	// new node's value is less than parent node's value
 	if (key < r->data)
 	{
+		// set r's left child to p
 		r->lChild = p;
 	}
+	// new node's value is greater than parent node's value
 	else
 	{
+		// set r's right child to p
 		r->rChild = p;
 	}
 }
 
+// inorder traversal using recursion
+// inorder will print the tree in order
+// from least to greatest
 void inorder(struct Node *p)
 {
+	// p is a node
 	if (p != NULL)
 	{
+		// recursive call using the left child
 		inorder(p->lChild);
+		// then print the current node
 		printf("%d ", p->data);
+		// recursive call using the right child
 		inorder(p->rChild);
 	}
 }
 
+// search for and return a node with a given key
+// if node doesn't exist then return null
 struct Node* search(int key)
 {
+	// node pointer used to travel the binary search tree
 	struct Node *t = root;
 	
+	// continue looping until t reaches null (end of tree)
 	while (t != NULL)
 	{
+		// key matches the current node's value
 		if (key == t->data)
 		{
+			// return node
 			return t;
 		}
+		// key is less than the current node's value
 		else if (key < t->data)
 		{
+			// set t to t's left child node
 			t = t->lChild;
 		}
+		// key is greater than the current node's value
 		else
 		{
+			// set t to t's right child node
 			t = t->rChild;
 		}
 	}
 	
+	// reaching here means t is null, meaning
+	// the key's value doesn't exist in the tree
 	return NULL;
 }
 
 int main()
 {
+	// inserting values into the binary search tree
 	insert(10);
 	insert(5);
 	insert(20);
 	insert(8);
 	insert(30);
 	
+	// printing the tree using inorder traversal
+	// which will print the values in order
 	inorder(root);
 	printf("\n");
 	
+	// node pointer used to hold a node
 	struct Node *temp;
+	// set temp to the node with a given the key
 	temp = search(20);
 	
+	// node with key was found 
 	if (temp != NULL)
 	{
+		// print node's value
 		printf("Element %d is found\n", temp->data);
 	}
+	// node with key was not found
 	else
 	{
+		// print node not found
 		printf("Element is not found\n");
 	}
 	
