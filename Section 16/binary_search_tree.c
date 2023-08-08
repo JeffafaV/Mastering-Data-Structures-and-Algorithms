@@ -9,13 +9,13 @@ struct Node
 	struct Node *rChild; // pointer that points to a right child node
 } *root = NULL; // global struct Node variable set to null
 
-// inserts a node to the binary search tree with key as its values
-// note that this binary search tree does not adjust its height
-// Ex. inserting 1, 2, 3, 4, 5 in that order will cause the tree to
+// inserts a node to the binary search tree with key as its value.
+// Note, inserting 1, 2, 3, 4, 5 in that order will cause the tree to
 // have a max height of 5. However, inserting 3, 2, 5, 1, 4 in that 
 // order will give the tree a max height of 3. Essentially this 
-// implementation has an O(n) search time complexity because of the 
-// order that the numbers are inserted
+// implementation has an O(n) search time complexity instead of O(log(n))
+// because the numbers can be inserted in any order and this 
+// binary search tree does not adjust its height to optimize search
 void insert(int key)
 {
 	// used to traverse the binary search tree if it is non-empty
