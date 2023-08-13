@@ -143,30 +143,48 @@ struct Node* search(int key)
 // inserts a node to the binary search tree with key as its value
 // using recursion calls. Note that this insert also has the same 
 // problem as the one above because the max tree height can be n 
-// instead of log(n) depending on the order of inserts made
+// instead of log(n) depending on the order of inserts made.
+// note that duplicate values can't be inserted in the tree
 struct Node* rinsert(struct Node *p, int key)
 {
+	// p is not pointing to a node
 	if (p == NULL)
 	{
+		// create a node pointer 
 		struct Node *t = NULL;
-		
+		// use t to create a new node in heap
 		t = (struct Node *)malloc(sizeof(struct Node));
-		t->data = key;
-		t->lChild = NULL;
-		t->rChild = NULL;
+		t->data = key; // set t's value to key
+		t->lChild = NULL; // set t's left child pointer to null
+		t->rChild = NULL; // set t's right child pointer to null
 		
+		// return the new node's address
+		// note that if this is the first insertion
+		// then you must set the root when called.
+		// look at the main function for example
 		return t;
 	}
 	
+	// key is less than the current node's value
 	if (key < p->data)
 	{
+		// set p's left child to a recursive call using p's left child
+		// note that this just resets the same child node for 
+		// all existing nodes and is used to traverse the tree
+		// and insert the new node
 		p->lChild = rinsert(p->lChild, key);
 	}
+	// key is greater than the current node's value
 	else if (key > p->data)
 	{
+		// set p's right child to a recursive call using p's right child
+		// note that this just resets the same child node for 
+		// all existing nodes and is used to traverse the tree
+		// and insert the new node
 		p->rChild = rinsert(p->rChild, key);
 	}
 	
+	// return the current node's address
 	return p;
 }
 
