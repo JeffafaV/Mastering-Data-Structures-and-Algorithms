@@ -188,24 +188,35 @@ struct Node* rinsert(struct Node *p, int key)
 	return p;
 }
 
+// returns the max node height of the binary search tree
 int height(struct Node *p)
 {
+	// used to hold the max node height of the left branch
 	int x;
+	// used to hold the max node height of the right branch
 	int y;
 	
+	// p is not pointing to a node
 	if (p == NULL)
 	{
+		// there is no node so we return 0
 		return 0;
 	}
 	
+	// set x to a recursive call using p's left child
 	x = height(p->lChild);
+	// set y to a recursive call uisng p's right child
 	y = height(p->rChild);
 	
+	// max height of the left branch is greater than the right
 	if (x > y)
 	{
+		// increment 1 to include the current node and return
 		return x + 1;
 	}
 	
+	// max height of the right branch is greater than or equal to the left
+	// increment 1 to include the current node and return 
 	return y + 1;
 }
 
@@ -277,26 +288,36 @@ struct Node* delete(struct Node *p, int key)
 
 int main()
 {
-	root = rinsert(root, 50);
+	// insert values into the tree using the recursive insert function
+	root = rinsert(root, 50); // must set root for first insert
 	rinsert(root, 10);
 	rinsert(root, 40);
 	rinsert(root, 20);
 	rinsert(root, 30);
 	
+	// delete a node from the tree
 	delete(root, 30);
 	
+	// print all values in the tree from least to greatest
 	inorder(root);
 	printf("\n");
 	
+	// node pointer that holds a searched node's address
 	struct Node *temp;
+	// set temp to the searched node's address
+	// if node doesn't exist then temp is set to null
 	temp = search(20);
 	
+	// temp holds a node
 	if (temp != NULL)
 	{
+		// print the node's value
 		printf("Element %d is found\n", temp->data);
 	}
+	// temp doesn't hold a node
 	else
 	{
+		// print node not found
 		printf("Element is not found\n");
 	}
 	
