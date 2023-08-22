@@ -220,35 +220,79 @@ int height(struct Node *p)
 	return y + 1;
 }
 
+// gets the inorder predecessor of a node when 
+// given that node's left child as the parameter
+// Ex.
+//        30
+//      /    \
+//    20      40
+//   /  \    /  \
+//  10  25  35  45
+//
+// 30's inorder pred is 25
+// 20's inorder pred is 10
+// 40's inorder pred is 35
+//
+// if you were to order the nodes from least to 
+// greatest than the inorder pred would be the 
+// number behind our given number (as seen in ex.)
 struct Node* inPred(struct Node *p)
 {
+	// continue looping so long as the current
+	// node and right child node aren't null
 	while (p != NULL && p->rChild != NULL)
 	{
+		// set p to p's right child
 		p = p->rChild;
 	}
 	
+	// return the inorder pred of a node
 	return p;
 }
 
+// gets the inorder successor of a node when 
+// given that node's right child as the parameter
+// Ex.
+//        30
+//      /    \
+//    20      40
+//   /  \    /  \
+//  10  25  35  45
+//
+// 30's inorder succ is 35
+// 20's inorder succ is 25
+// 40's inorder succ is 45
+//
+// if you were to order the nodes from least to 
+// greatest than the inorder succ would be the 
+// number ahead our given number (as seen in ex.)
 struct Node* inSucc(struct Node *p)
 {
+	// continue looping so long as the current 
+	// node and left node aren't null
 	while (p != NULL && p->lChild != NULL)
 	{
+		// set p to p's left child
 		p = p->lChild;
 	}
 	
+	// return the inorder succ of a node
 	return p;
 }
 
+// delete a node from the binary search tree
 struct Node* delete(struct Node *p, int key)
 {
 	struct Node *q;
 	
+	// p is not pointing to a node
 	if (p == NULL)
 	{
+		// there is nothing to delete since the tree is empty
 		return NULL;
 	}
-	if (p->lChild == NULL && p->rChild == NULL)
+	
+	if (p->lChild == NULL && p->rChild == NULL && p->data == key)
 	{
 		if (p == root)
 		{
