@@ -303,22 +303,33 @@ struct Node* delete(struct Node *p, int key)
 		return NULL;
 	}
 	
+	// key is less than the current node's value
 	if (key < p->data)
 	{
+		// set p's left child to a recursive call using p's left child as a parameter
+		// which will just reset p's left child to the address it was already pointing at
+		// this is basically used for traversal and will actually not delete anything
 		p->lChild = delete(p->lChild, key);
 	}
+	// key is greater than the current node's value
 	else if (key > p->data)
 	{
+		// set p's right child to a recursive call using p's right child as a parameter
+		// which will just reset p's right child to the address it was already pointing at
+		// this is basically used for traversal and will actually not delete anything
 		p->rChild = delete(p->rChild, key);
 	}
+	// key is equal to the current node's value
 	else
 	{
+		// the height of the left branch is greater than the height of the right branch
 		if (height(p->lChild) > height(p->rChild))
 		{
 			q = inPred(p->lChild);
 			p->data = q->data;
 			p->lChild = delete(p->lChild, q->data);
 		}
+		// the height of the left branch is less than or equal to the height of the right branch
 		else
 		{
 			q = inSucc(p->rChild);
