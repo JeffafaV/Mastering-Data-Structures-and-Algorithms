@@ -280,9 +280,38 @@ struct Node* inSucc(struct Node *p)
 	return p;
 }
 
-// delete a node from the binary search tree
+// delete a node from the binary search tree using a given key
+// kind of hard to follow but basically we change 
+// the value of nodes and then we delete a leaf node 
+// so that the structure of the tree stays the same
+// Ex.
+//        30
+//      /    \
+//    20      40
+//   /  \    /  \
+//  10  25  35  45
+//
+// if we want to delete 30 we have to find its pred or succ.
+// since the height is the same for both sides of 30 we 
+// use the successor of 30 which is 35. so we replace the value 
+// of 30 to 35 and then we traverse down to the node that
+// originally held the value 35. once we reach the node that held 
+// 35 originally we are able to delete it. so even though we 
+// are removing 30 from the tree we are actually deleting the 
+// node that originally held 35. the tree ends up looking like this
+//
+//        35
+//      /    \
+//    20      40
+//   /  \       \
+//  10  25      45
+//
+// the amount of value changes depend on how many preds or succs
+// we go through and we always delete a leaf node which may not
+// necessarily hold the value we want to delete
 struct Node* delete(struct Node *p, int key)
 {
+	// holds either the predecessor or successor of p
 	struct Node *q;
 	
 	// p is not pointing to a node
@@ -292,14 +321,21 @@ struct Node* delete(struct Node *p, int key)
 		return NULL;
 	}
 	
+	// p is a leaf node and p's value is the same as the key
 	if (p->lChild == NULL && p->rChild == NULL && p->data == key)
 	{
+		// p is the only node in the binary search tree
 		if (p == root)
 		{
+			// set root to null since p will be deleted
 			root = NULL;
 		}
 		
+		// delete p's node
 		free(p);
+		
+		// return null since the node doesn't exist anymore
+		// so whatever node that was pointing to p will now point to null
 		return NULL;
 	}
 	
@@ -325,19 +361,36 @@ struct Node* delete(struct Node *p, int key)
 		// the height of the left branch is greater than the height of the right branch
 		if (height(p->lChild) > height(p->rChild))
 		{
+			// set q to p's inorder predecessor
 			q = inPred(p->lChild);
+			// set p to its inorder predecessor
 			p->data = q->data;
+			// set p's left pointer to a recursive call using p's left pointer and q's data as the key
+			// note that we don't actually delete the node here 
+			// we either just reset p's left child pointer to the address it was 
+			// already pointing at or we set a node's left child pointer to 
+			// null after a node gets deleted. this is also used for traversal
+			// also note that the predecessor becomes the new key marked for deletion
 			p->lChild = delete(p->lChild, q->data);
 		}
 		// the height of the left branch is less than or equal to the height of the right branch
 		else
 		{
+			// set q to p's inorder successor
 			q = inSucc(p->rChild);
+			// set p to its inorder successor
 			p->data = q->data;
+			// set p's right pointer to a recursive call using p's right pointer and q's data as the key
+			// note that we don't actually delete the node here 
+			// we either just reset p's right child pointer to the address it was 
+			// already pointing at or we set a node's right child pointer to 
+			// null after a node gets deleted. this is also used for traversal
+			// also note that the successor becomes the new key marked for deletion
 			p->rChild = delete(p->rChild, q->data);
 		}
 	}
 	
+	// return the current node
 	return p;
 }
 
